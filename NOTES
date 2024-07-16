@@ -1,0 +1,32 @@
+Day 2:
+TASK 2: Cisco and DNS using POWERSHELL
+TASK 3: Mastering IPV4 and IPV6
+  Step 1: CHANGE YOUR BRAIN.
+Pera              IPv4                            IPv6
+0-9               0-255                           0-9,a-f
+7999              7.255.255.255                   :7fff:          -1
+8000              8.0.0.0                         :8000:
+8001              8.0.0.1                         :8001:          +1
+
+9999              9.255.255.255                   :fff:           -1
+1000              10.0.0.0                        :1000:
+1001              10.0.0.1                        :1001:          +1
+
+TASK 4: HOW TO SUBNET?
+RIVAN METIOD: = 3Secs
+CSI= ConvertIT, SubtractIT, IpasokSaHiwaMasikip
+10.0.0.0/8 -> 16,777,214 user can be accomodate
+172.16.0.0/16 -> 65,534 user can be accomodate
+192.168.0.0/24 -> 254 user can be accomodate
+
+Ex1.DESIGN A NETWORK USING SUBNETTING FOR Accenture.com with 1500 Agents,TL's,PMs:
+ConvertToBits: 1500 is Bits = 11b
+Subtract/32: /-32 - /11 = /21 is | 3rd,8i
+IPasokSaHiwa: Ipasok si 8i sa 3rd
+Accenture.com: 10.0.8.0/21
+1stIP: 10.0.8.1/21
+LastIP:10.0.15.255/21
+Not: 10.0.16.0/21
+
+
+
