@@ -15,15 +15,15 @@ config t
       exec-timeout 0 0
    Int Vlan 1
      no shutdown
-	 ip add 10._.1.2 255.255.255.0
+	 ip add 10.22.1.2 255.255.255.0
 	 description MGMTDATA
    Int Vlan 10
      no shutdown
-	 ip add 10._.10.2 255.255.255.0
+	 ip add 10.22.10.2 255.255.255.0
 	 description WIRELESS
    Int Vlan 50
      no shutdown
-	 ip add 10._.50.2 255.255.255.0
+	 ip add 10.22.50.2 255.255.255.0
 	 description IPCCTV
    Int Vlan 100
      no shutdown
@@ -69,10 +69,10 @@ config t
 !DHCP: DYNAMIC HOST CONFIGURATION PROTOCOL
 !@@@LEAF SWITCH
 config t
-ip dhcp Excluded-add 10.22.1.1 10.22.1.100
-ip dhcp Excluded-add 10.22.10.1 10.22.10.100
-ip dhcp Excluded-add 10.22.50.1 10.22.50.100
-ip dhcp Excluded-add 10.22.100.1 10.22.100.100
+ip dhcp Excluded-add 10.22.1.1 10.22.1.80
+ip dhcp Excluded-add 10.22.10.1 10.22.10.80
+ip dhcp Excluded-add 10.22.50.1 10.22.50.80
+ip dhcp Excluded-add 10.22.100.1 10.22.100.80
 ip dhcp pool MGMTDATA
    network 10.22.1.0 255.255.255.0
    default-router 10.22.1.4
@@ -379,7 +379,7 @@ config t
 dial-peer voice 69 voip
  service rivanaa out-bound
  destination-pattern 2269
- session target ipv4:10.22.100.8
+ session target ipv4:10.22.100.80
  incoming called-number 2269
  dtmf-relay h245-alphanumeric
  codec g711ulaw
