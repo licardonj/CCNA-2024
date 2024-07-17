@@ -27,6 +27,42 @@ Accenture.com: 10.0.8.0/21
 1stIP: 10.0.8.1/21
 LastIP:10.0.15.255/21
 Not: 10.0.16.0/21
+_____________________________
+DAY 3: IPv4 subnetting in RealWorld/Exam.
+"The 5 Hit Combo!"
+
+1st Combo: Need to know the valid range
+2nd Combo: Need to know the broadcast
+3rd Combo: Need to know the 1st Valid
+4th Combo: Need to know the Host
+5th Combo: Need to know the Subnets
+
+STEP 1:/19 -> 3rd , 32i
+STEP 2: interogate the 3rd,32i of IP: 10.79.100.69 ask, what 32i? 100 falls: 0,32,64,96
+
+1. Network Address: 10.79.96.0/21
+2. 1st Valid Range: 10.79.96.1 - 10.79.127.255
+3. Last/bc: 10.79.127.255
+4: Hosts lahat? /32 - /? = /19. 13bits, 4000 hosts!
+5: Subnets lahat? Orig + /something = /new. /8 + /? = /19,11bits, 1000 subnets
+
+Question 1: 
+You found a laptop wiht the IP Address of 10.79.100.69/19. To which department it belongs?
+a.Sales      10.79.0.0
+b.Marketing  10.79.32.0
+c.IT Dept    10.79.64.0
+d.Admin      10.79.96.0
+
+TASK 2: COMPLETE ROUTING IN 5 LETTERS:
+Static
+Default
+Ospf
+Eigrp
+Bgp
+
+TASK 3.1: STATIC ROUTING FOR MINIMUM WAGE!
+STATIC ROUTING:
+
 
 
 
