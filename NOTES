@@ -87,5 +87,135 @@ ip routing
 ip route 0.0.0.0 0.0.0.0 10.22.100.4
 do sh ip route static
 
+TASK 4: DYNAMIC ROUTING:
+◘ OPEN SHORTEST PATH FIRST: OSPF
+◘ How to configure OSPF:
+◘ All areas less than 50 devices must use area 0.
+
+@EdGE:
+Config t
+no router ospf 1
+router ospf 1
+router-id 22.0.0.1
+network 10.22.22.0 0.0.0.255 area 0
+network 22.0.0.1 0.0.0.0 area 0
+network 200.0.0.0 0.0.0.255 area 0
+
+@COREBABA: sh ip route | inc C
+Config t
+no router ospf 1
+router ospf 1
+network 10.22.1.0 0.0.0.255 area 0
+network 10.22.10.0 0.0.0.255 area 0
+network 10.22.22.0 0.0.0.255 area 0
+network 10.22.50.0 0.0.0.255 area 0
+network 10.22.100.0 0.0.0.255 area 22
+
+@CUCM: sh ip route | inc C
+Config t
+no router ospf 1
+router ospf 1
+network 10.22.100.0 0.0.0.255 area 22
+____________________
+◘!!HOW TO MONITOR OSPF IN THE EXAM.
+Clear IP OSPF process
+
+◘ Full vs 2Way
+◘ ospf ELECTION: "Dite ELF"
+• Down - No adjacencym hello sent
+• Init - build adjacency
+• TwoWay - hello was received
+• Exstart - Database descryption: DVD
+• Exchange - LinkState Updates
+• Loading - Routing is being loaded
+• Full
+
+Hello
+DBD
+LSU
+  LSA(Link State Advetisement)
+    • Type 1 (O)
+    • Type 2 (DR/BDR)
+    • Type 3 (OIA)
+________________________
+TASK 5: ENHANCE INTERIOR GATEWAY ROUTING PROTOCOL (EIGRP)
+◘ Kill OSPF:
+config t
+no router ospf 1
+end
+
+TASK 6: CONFIGURING cisco cloud services router: CSR
+config t
+no logging console
+no ip domain-lookup
+int gi 3
+no shut
+ip add 192.168.103.22 255.255.255.0
+do wr
+end
+
+Famous IPv6 Celebrities:
+◘ ::/0           Default Route
+◘ ::1/128        Loopback
+◘ FE80::/10      Link-local unicast
+◘ FF00::/8       Multicast
+◘ FC00::/10      Unique Local
+
+TASK 7: Configure IPv6 in Cisco CloudServiceRouter:
+◘ Method 1: Autoconfig: 100% automatic
+Config t
+line vty 0 14
+exec-timeout 0 0
+ipv6 unicast-routing
+int Gi 2
+ipv6 enable
+ipv6 address autoconfig
+do sh ipv6 int bri
+
+Method 2: extended userID/EUI-64 method: 50% ikaw, 50% automatic
+config t
+ipv6 unicast-routing
+int gi 2
+no shut
+ipv6 address b00d:dead:cafe:000f::/64 eui-64
+ipv6 address b0ba:b00b:dada:dede::/64 eui-64
+ipv6 address abcd:dcba:fdcb:0001::/64 eui-64
+do sh ipv6 int bri
+
+◘ HOW TO SUBNET IPv6: /49<--->/64
+Use CAI: Convert, Add, InchambaMo
+
+♦ EX1: Accenture is using : face:cafe:aced:dace::/48,but will have subnet: pilot 50 offices.
+Convert: 50 is ilang bits? 6 bits
+AddToOrig/: /48 + /6 = /54
+InChambaMo: 00, 04, 08, 0c...
+
+♦ EX2: Telus is using : fafa:baba:dada::/48,but will have subnet: pilot 95 offices. 
+Convert 7b
+Add: /48 + /7 = 55
+chamba: 00, 02, 04, 06, 08, 0a...  
+
+♦ EX3: VXI is using : fafa:baba:dada::/48,but will have subnet: pilot 800 offices.
+Convert: 10b
+add /48 + 10 = 58
+Ichamba: 000, 004, 008, 00c, 010, 014, 018, 01c...
+
+♦ DEPLOY THIS IN REAL WORLD:
+config t
+!int loopback 0
+!ipv6 address fafa:baba:dada::1/58
+int loopback 1
+ipv6 address fafa:baba:dada:004::1/58
+int loopback 0
+ipv6 address fafa:baba:dada:008::1/58
+int loopback 0
+ipv6 address fafa:baba:dada:00c::1/58
+int loopback 0
+ipv6 address fafa:baba:dada:010::1/58
+int loopback 0
+ipv6 address fafa:baba:dada:014::1/58
+do sh ipv6 int br
+
+
 
 
