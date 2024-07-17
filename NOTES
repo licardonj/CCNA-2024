@@ -61,8 +61,31 @@ Eigrp
 Bgp
 
 TASK 3.1: STATIC ROUTING FOR MINIMUM WAGE!
-STATIC ROUTING:
+Config t 
+no ip routing
+ip routing
 
+STATIC ROUTING::
+EDGE:
+config t
+ip route 10.11.0.0 255.255.0.0 200.0.0.11
+ip route 10.12.0.0 255.255.0.0 200.0.0.12
+ip route 10.21.0.0 255.255.0.0 200.0.0.21
+ip route 10.31.0.0 255.255.0.0 200.0.0.31
+ip route 10.41.0.0 255.255.0.0 200.0.0.41
+ip route 10.32.0.0 255.255.0.0 200.0.0.32
+ip route 10.42.0.0 255.255.0.0 200.0.0.42
+ip route 10.22.0.0 255.255.0.0 10.22.22.4
+
+CORE:
+ip routing 
+ip route 0.0.0.0 0.0.0.0 10.22.22.1
+do sh ip route static
+
+CUCM:
+ip routing 
+ip route 0.0.0.0 0.0.0.0 10.22.100.4
+do sh ip route static
 
 
 
