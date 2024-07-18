@@ -216,6 +216,223 @@ int loopback 0
 ipv6 address fafa:baba:dada:014::1/58
 do sh ipv6 int br
 
+◘◘◘◘ DAY 4: 
+TASK 2: name the 3 ways to give IPv6
+
+Config t
+ipv6 unicast-routing
+int Gi 2
+ipv6 enable
+ipv6 address autoconfig
+ipv6 address dafa:caba:baaa:014::4321/64
+ipv6 address dafa:caba:baaa:1014::1111/64
+no shut
+end
+
+TASK 3: Design Sykes.com IPv6 network of:
+aaaa:bbbb:cccc::/48 subnet to 350 subnets
+CAI: 
+C:
+A: 
+I: 
+
+config t
+int loopback1
+ipv6 address aaaa:bbbb:cccc:0000::aaaa/57
+int loopback2
+ipv6 address aaaa:bbbb:cccc:0080::aaaa/57
+int loopback3
+ipv6 address aaaa:bbbb:cccc:0100::aaaa/57
+int loopback4
+ipv6 address aaaa:bbbb:cccc:0180::aaaa/57
+int loopback5
+ipv6 address aaaa:bbbb:cccc:0200::aaaa/57
+int loopback6
+ipv6 address aaaa:bbbb:cccc:0280::aaaa/57
+end
+
+TASK 4: Design Telus.com IPv6 network of:
+cccc:dddd:eeee::/48 subnet to 1500 subnets
+8421 8421 842
+
+002,004,006,008,012,014
+
+config t
+int loopback1
+ipv6 address cccc:dddd:eeee:0000::/48
+int loopback2
+ipv6 address cccc:dddd:eeee:0020::/48
+int loopback3
+ipv6 address cccc:dddd:eeee:0040::/48
+int loopback4
+ipv6 address cccc:dddd:eeee:0060::/48
+int loopback5
+ipv6 address cccc:dddd:eeee:0080::/48
+end
+
+TASK 5: Running Linux and Cisco server together:
+
+      Gi1: 192.168.108.22 --
+CSR:  Gi2: 192.168.102.22 -- BldgLin2  : 192.168.102.52
+      Gi3: 192.168.103.22 -- BldgLin3  : 192.168.103.33
+                             BldgLin3A : 192.168.103.34
+Program:
+sudo ifconfig eth0 192.168.102.52 netmask 255.255.255.0 up
+sudo route add default gw 192.168.102.22
+
+TASK 6: NAT or Network Address Translation to give internet to your building/home.
+Command to give internet to all buildings:
+STEP1: Get internet to CiscoAWS
+config t
+int gi 1
+no shut
+ip add 192.168.108.8 255.255.255.0
+int gi 2
+no shut
+ip add 192.168.102.8 255.255.255.0
+int gi 3
+no shut
+ip add 192.168.103.8 255.255.255.0
+
+STEP2: GIve Static route to CiscoAWS
+config t
+ip route 0.0.0.0 0.0.0.0 192.168.108.2
+ip domain-name rivanit.com
+ip domain-lookup
+ip name-server 8.8.8.8 1.1.1.1
+
+STEP3: Give internet to the 3 buildings using NAT and access-list
+config t
+no access-list 3
+access-list 3 permit 192.168.102.0 0.0.0.255
+access-list 3 permit 192.168.103.0 0.0.0.255
+int gi 1
+ip nat outside
+int gi 2
+ip nat inside
+int gi 3
+ip nat inside
+ip nat inside source list 3 interface gi 1 overload
+ip nat inside source static 192.168.103.8 192.168.108.69
+
+TASK 7: NEtwork time protocol
+config t
+ipv6 unicast-routing
+no logging console
+line console 0
+exec-timeout 0 0
+int gi 1
+no shut
+ip add 192.168.108.8 255.255.255.0
+int gi 2
+no shut
+ip add 192.168.102.8 255.255.255.0
+int gi 3
+no shut
+ip add 192.168.103.8 255.255.255.0
+ipv6 add a:a:a:a::a/64
+
+config t
+ip route 0.0.0.0 0.0.0.0 192.168.108.2
+ip domain-lookup 
+ip name-server 8.8.8.8 1.1.1.1
+do ping time.google.com
+end
+
+TASK 8: FTP(File Transfer Protocol) server 
+-A layer 7 protocol that uses layer 4 port 21/20
+Step 1: d:\netusb1
+Step 2: install FTP server role:
+powershell
+install-windowsfeature web-ftp-server -includeallsubfeature
+import-module webadministration
 
 
+TASK9: Learn Basic Encryption 
+Config t 
+username admin privilege 15 secret pass
+username nick privilege 15 secret pass
+username inutil privilege 7 secret pass
+line vty 0 14
+login local
+exec-timeout 0 0
+end
 
+TASK10: Encryption
+config t
+ip domain-name rivanit.com
+crypto key generate rsa
+
+ip ssh version 2
+ip ssh time-out 120
+end
+
+TASK 11: TFTP(Trivial File Transfer Protocol)
+tftp = very fast, not reliable, uses user datagram protocol, port-69
+ftp  = slower but reliable, uses seq,ack,window
+
+
+TASK12: HOW TO START A HACKING CAREER in penetration.
+STEP1: Security concepts(Threats, vulnerabilities, exploits, and mitigation techniques) = MITRE framework
+
+Ping 10.k.1.10
+nmap -sP 10.k.100.0/24
+nmap -v 10.k.1.10 (nmap -Pn -v 10.k.1.10)
+
+CMD
+net us \\10.21.1.10\ipc$ /user:administrator
+net use s: \\www.ccp.edu.ph\d$
+s:
+mkdir 
+
+HOW TO KNOW WHO HAVE CONNECTED!!!
+netstat -s -p tcp
+
+TASK 13: HOW TO PROTECT TIYR WEB APPS/ INTERNET SERVERS
+Ex1: 
+PROTOCOL    HACKER    VICTIM    PORT
+@fwvpn
+
+Config t
+no ip access-list extended POLICY1
+ip access-list extended POLICY1
+permit tcp any host www.web8.com eq 80 log
+permit tcp any host www.web8.com eq 443 log
+permit tcp any host www.web9.com eq 53 log
+permit tcp any host www.web9.com eq 22 log
+permit icmp any host www.web9.com log
+int gi 3
+ip access-group POLICY1 in
+end
+
+EX2:
+Config t
+no ip access-list extended POLICY2
+ip access-list extended POLICY2
+permit tcp any host www.web8.com eq 53 log
+permit tcp any host www.web8.com eq 22 log
+permit tcp any host www.web8.com eq 80 log
+permit tcp any host www.web9.com eq 443 log
+permit tcp any host www.web9.com eq 22 log
+permit tcp any host www.web9.com eq 23 log
+int gi 3
+ip access-group POLICY2 in
+end
+
+EX3:
+Config t
+no ip access-list standard SOULMATE
+ip access-list standard SOULMATE
+permit 10.21.0.0 0.0.255.255
+deny any
+interface Gi 0/0/1
+ip access-group SOULMATE in
+do sh ip access-list SOULMATE
+
+config t
+interface Gi 0/0/1
+no ip access-group SOULMATE in
+
+set-netfirewallprofile -name public,private,domain -enabled false
+
+TASK14: 
