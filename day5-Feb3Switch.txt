@@ -73,7 +73,7 @@ ip route 0.0.0.0  0.0.0.0 10.m.1.4
 ipv6  route  ::/0   face:cafe:face:cafe::aaaa
 
 config t
-   hostname COREbaba_
+   hostname COREtaas22
    enable secret pass
    service password-encryption
    no logging console
@@ -139,7 +139,7 @@ config t
 	 ip add 10.22.100.4 255.255.255.0
 	 description VOICEVLAN
 
-TASK3: THE ULTIMATE SKILL FOR A NETWORK ENGINEER.
+►►►►► TASK3: THE ULTIMATE SKILL FOR A NETWORK ENGINEER.
 Top 5 brands:
 1.Cisco = 75% =google,aws,azure,etc,
         Cisco Invented the FirstEthernetSW
@@ -151,7 +151,7 @@ Top 5 brands:
 
 sh spanning-tree vlan 1
 
-TASK3: EXPENSIVE SWITCH/MANAGEABLE SWITCH:\ = 20k
+►►►►► TASK3: EXPENSIVE SWITCH/MANAGEABLE SWITCH:\ = 20k
 1. mac address learning": sh mac address-table
 2  mac address filtering
 3  mac address forwaring
@@ -160,7 +160,7 @@ TASK3: EXPENSIVE SWITCH/MANAGEABLE SWITCH:\ = 20k
 
 COREbaba12#sh mac address-table
 
-TASK4: Mastering the Switch BUttons:
+►►►►► TASK4: Mastering the Switch BUttons:
 Mode Button: jailBreak/Password Forget/ factory reset 
 Poweroff, Press Mode, until
 Switch:  flash_init
@@ -168,7 +168,7 @@ Switch:  flash_init
          delete flash:vlan.dat
          boot
 
-TASK5: HOW TO SPOT A VERY HEALTHY SWITCH?
+►►►►► TASK5: HOW TO SPOT A VERY HEALTHY SWITCH?
 super healthy: "all flashing green."
 amber/orange: needs help. - you are protected
 
@@ -186,7 +186,7 @@ indicator no.2: if you plug a device=30s
 
 indicator no.3: Kislap every 1/2 seconds
 
-TASK6: HOW TO GET FIRED IMMEDIATELY!
+►►►►► TASK6: HOW TO GET FIRED IMMEDIATELY!
 @baba:
 config t
 NO spanning-tree vlan 1-999
@@ -196,7 +196,7 @@ config t
 spanning-tree vlan 1-999
 end
 
-TASK7: HOW TO BECOME A WORLD-CLASS NETWORK ENGINEER
+►►►►► TASK7: HOW TO BECOME A WORLD-CLASS NETWORK ENGINEER
 SPECIALIZING IN SWITCH:
 Master the 4 super Hereos of Switching
 Qpid: 802.1Q:trunking
@@ -208,7 +208,7 @@ WonderWoman: 802.1w: rapidSTP
 SuperMan: 802.1s: MiSTP
 "Protect Many Switches at the same time!"
 
-TASK8: ACCESS PORTS VS TRUNK PORTS:
+►►►►► TASK8: ACCESS PORTS VS TRUNK PORTS:
 Trunk Ports: switch to switch:
 TAAS/BABA:
 config t
@@ -221,7 +221,7 @@ Int Range fa0/10-12
 Dot1q = Qupid,mave switches love each other:
       IEEE standard where SW will from Layer 2 trunks
 
-TASK9: SPANNING-TREE PROTOCOL: 802.1D: protect switches Slowly.
+►►►►► TASK9: SPANNING-TREE PROTOCOL: 802.1D: protect switches Slowly.
 blk-lis-lrn-fwd = 30 seconds.
 wireshark = bridge priority is 32768 = very Hackable!
 " bobo/inutil ang Network Engineer nyo sa company!"
@@ -238,13 +238,13 @@ spanning-tree mode pvst
 spanning-tree vlan 1-100 root Secondary
 do sh spanning-tree vlan 1
 
-TASK9.1: STP port states. 802.1D states.
+►►►►► TASK9.1: STP port states. 802.1D states. ◄◄◄◄◄
 iniwanngSyuta: lungkot,galit,lasing,moveOn.
 Switch: show spanning-tree vlan 1
 Blk - LIS - LRN -FWD
       15s   15s     = 30s
 
-Task9.2: STP Port Roles: 
+►►►►► Task9.2: STP Port Roles:  ◄◄◄◄◄
 DesignatedPort/DP = fwd port of Root Bridge
 RootPort/RP = fwd port of non-root Bridge(1 only)
 AlternatePort/AP = blk port of nonRootPorts
@@ -257,7 +257,7 @@ who is darna: 802.1d
 kabit PC = 30s
 putol trunk, recover =30s, acceptable? BANK,HOst,Pol,Mil
 
-TASK10: Rapid Spanning-tree Protocol: 802.1w
+►►►►► TASK10: Rapid Spanning-tree Protocol: 802.1w
 TAAs/BABA: tikam si wonderWoman
 config t
 spanning-tree Mode Rapid-pvst
@@ -292,7 +292,12 @@ int fa 0/7
  no shut
 end
 
-TASK11: Multiple instance STP: 802.1s
+►►►►► TASK11: Multiple instance STP: 802.1s
+
+#sh spanning-tree mst config
+
+Make FORCEs all CPU/Instances work to protect VLANS, cpu0 = is working
+
 step1: sync all Vlans with VTP:vlanTrunkingProtocol:
 TAAS/BABA: d1/d2:
 config t
@@ -410,7 +415,7 @@ config t
 hostname PLDTITO
 Track 1 Int gi 0/1 line-protocol
 Int vlan 1
-standby 1 ip 10.__.1.6
+standby 1 ip 10.22.1.6
 standby 1 preempt
 standby 1 Priority 150
 standby 1 Track 1 decrement 60
@@ -428,7 +433,7 @@ COREBABA/GLOBE:
 config t
 hostname GLOBEITO
 Int vlan 1
-standby 1 ip 10.__.1.6
+standby 1 ip 10.22.1.6
 standby 1 preempt
 standby 1 Priority 100
 
@@ -460,7 +465,7 @@ VRRP 10 preempt
 VRRP 10 Priority 100
 
 
-TASK17: Port-Aggregation/Etherchannel:
+►►►►► TASK17: Port-Aggregation/Etherchannel: ◄◄◄◄◄ LAB ITO
 LACP:LINK AGGREGATION CONTROL PROTOCOL = ieee worldStandrad
 cisco = PortAggregationProtocl: PaGP
 Combinding Two/More Layer 2 links AS ONE! Unite/UNITY
